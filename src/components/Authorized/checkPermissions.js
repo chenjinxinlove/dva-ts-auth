@@ -12,7 +12,7 @@ import { getUserInfo } from '../../utils/storage';
 const checkPermissions = (authority, currentAuthority, target, Exception) => {
   // 没有判定权限.默认查看所有
   // 如何token为空说明没有登录
-  if (getUserInfo() && getUserInfo().token && getUserInfo().token.length === 0) {
+  if (!getUserInfo() || !getUserInfo().token || getUserInfo().token.length === 0) {
     return Exception;
   }
   if (!authority) {
